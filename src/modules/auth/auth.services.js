@@ -15,7 +15,7 @@ export const signup = async ({email , password , username ,phone})=>{
             select :'email'
         }
     })
-    if(duplicatedAcc) throw Conflict()
+    if(duplicatedAcc) throw Conflict('this acc exists')
         if (phone) {
     phone = await encryption(phone);
 }

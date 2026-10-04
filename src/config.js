@@ -18,3 +18,6 @@ export const ACCESS_TOKEN_SIGNTURE = process.env.ACCESS_TOKEN_SIGNTURE ?? "SDFRE
 export const ACCESS_TOKEN_EXPIRES_IN = Number(process.env.ACCESS_TOKEN_EXPIRES_IN) || 1800;
 
 
+export const REDIS_URI = process.env.REDIS_URI ;
+
+

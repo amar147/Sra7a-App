@@ -6,9 +6,10 @@ import { PORT } from "./config.js";
 const app = express()
 app.use(express.json());
 app.get('/', (req, res) => res.send('Hello World!'))
-bootstrapDB(app, PORT)
+await bootstrapDB(app, PORT)
 app.use(authController)
 app.use('/user', userController)
+
 
 
 
