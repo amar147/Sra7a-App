@@ -2,7 +2,7 @@ import {Router} from "express";
 import { login, signup  } from "./auth.services.js";
 import { validation } from "../../middleware/validation.middleware.js";
 import { loginValidationSchema, signupSchema } from "./auth.validation.js";
-import { rotateToken  , logout} from "../user/user.services.js";
+import {  logout} from "../user/user.services.js";
 const router = Router();
 
 
@@ -31,11 +31,16 @@ router.post('/logout',validation(),   async  (req, res) => {
 
 
 
-router.post('/refresh-token',validation(),   async  (req, res) => {
-    const data = await rotateToken(req.payload , req.user, req.issuer);
-    return res.status(200).json({message:"token refreshed successfully",data})
+// router.post('/refresh-token',validation(),   async  (req, res) => {
+//     const data = await rotateToken(req.payload , req.user, req.issuer);
+//     return res.status(200).json({message:"token refreshed successfully",data})
 
-})
+// })
+
+
+
+
+
 
 
 export default router;

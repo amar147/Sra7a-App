@@ -1,5 +1,8 @@
 import {  findOneAndUpdate } from "../../common/repository/index.js"
+import {  Conflict } from "../../common/exeptions/index.js"
 import { userModel } from './../../DB/model/user.model.js';
+import { createLoginCredentials } from "../../common/security/token.security.js";
+
 
 
 /*
@@ -28,13 +31,14 @@ return acc
 
 
 export const rotateToken = async (payload, user, issuer) => {
-    console.log({ payload, user });
-    const expireAccessAt = (payload.iat + ACCESS_TOKEN_EXPIRES_IN) * 1000;
+    // return {payload, user}
+    const expireAccessAt = (payload.iat + ACCESS_TOKEN_EXPIRES_II) * 1000;
     const currentTime = Date.now() + (5 * 60000);
     if (currentTime < expireAccessAt) {
-        throw ConflictException("Sorry we cannot create new login credentials while current credentials still within validity");
+        throw Conflict("Sorry we cannot create new login credentials while current credentials still within validity");
     }
-    return createLoginCredentials({ user, issuer });
+    return createLoginCredentials({ payload:{sub: user._id}  , user});
+    // return {payload, user}
 }
 
 
