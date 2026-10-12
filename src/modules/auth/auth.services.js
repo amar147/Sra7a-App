@@ -20,7 +20,8 @@ export const signup = async ({email , password , username ,phone ,role})=>{
 }
     const acc = await createOne({
         model:userModel,
-        data:{email ,
+        data:{
+            email,
             password: await hash(password) ,
             username,
             phone,

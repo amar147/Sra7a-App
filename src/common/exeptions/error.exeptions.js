@@ -17,6 +17,16 @@ export const Conflict =(message='Confilct Account' , issues={} )=>{
         }
 })
 }
+
+
+export const BadRequestException =(message='BadRequestException' , issues={} )=>{
+    return AppErrors({
+        message,
+        options :{
+            cause :{status :400 ,issues}
+        }
+})
+}
 export const NotFound =(message='User Not Found' , issues={} )=>{
     return AppErrors({
         message,

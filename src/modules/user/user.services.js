@@ -28,6 +28,11 @@ export const update =async (user ,data )=>{
 return acc
 }
 
+export const profileImage =async (user , file)=>{
+    user.image = file.path
+    await user.save()
+    return user 
+}
 
 
 export const rotateToken = async (payload, user, issuer) => {
@@ -46,3 +51,5 @@ export const logout = async (payload, user) => {
     console.log({ payload, user }); 
 
 }
+
+

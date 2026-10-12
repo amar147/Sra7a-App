@@ -2,7 +2,6 @@ import {Router} from "express";
 import { login, signup  } from "./auth.services.js";
 import { validation } from "../../middleware/validation.middleware.js";
 import { loginValidationSchema, signupSchema } from "./auth.validation.js";
-import {  logout} from "../user/user.services.js";
 const router = Router();
 
 
@@ -23,11 +22,7 @@ router.post('/login',validation(loginValidationSchema),   async  (req, res) => {
 
 
 
-router.post('/logout',validation(),   async  (req, res) => {
-    const data = await logout(req.payload , req.user);
-    return res.status(200).json({message:"user logged out successfully",data})
 
-})
 
 
 
